@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block content %}
+<h1 align="center">Catalog</h1>
+{% if category %}
+<h4 align="center">Category: {{ category |safe }}</h4>
+{% endif %}
+<form method="post">
+    <div class="input-group">
+        <div class="form-group form-floating">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Search for an Item">
+            <label for="search" class="form-label">Search Item by Category</label>
+        </div>
+        <button type="submit" class="btn btn-primary">&#128269; Search</button>
+    </div>
+</form>
+<!-- https://drive.google.com/uc?id=132sS50ZuygGpjv7btaR0q13isxELWCSC -->
+<!-- https://picsum.photos/100/50 -->
+<br>
+<div class="row gy-4">
+    {% for item in item_list %}
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+            <img class="card-img-top" src="https://picsum.photos/350/180" alt="Card image cap" style="height: 15em;">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-subtitle">{{ item.category }}</p>
+                <p class="card-text text-truncate">{{ item.description |safe}}</p>
+                <p class="card-subtitle"><b>Rs. {{ item.price }}</b></p>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#item-{{ item.id
+                            }}">View
+                            Details</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" onclick="deleteProduct('{{ item.id }}')">Buy Now</button>
+                    </div>
+                </div>
+                <div class="modal" id="item-{{ item.id }}">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Product Details</h3>
+                                <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-thumbnail justify-content-center" src="https://picsum.photos/500/250">
+                                <p><b>Product Name: </b>{{ item.name }}</p>
+                                <p><b>Category: </b>{{ item.category }}</p>
+                                <p><b>Description: </b>{{ item.description | safe }}</p>
+                                <p><b>Price: </b>Rs. {{ item.price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

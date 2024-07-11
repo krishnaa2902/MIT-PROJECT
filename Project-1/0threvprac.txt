@@ -1,0 +1,16 @@
+cross side scripting attack is a type of injection attack where malicious scripts are injected in trusted websites, executed by the user's browser.
+
+impact
+when an attacker injects malicious code the browser will be tricked into thinking that the script is actually from a trusted source and this will execute the script leading to severe vulnerabilites including attackers gaining access to cookies and session tokens.
+This would enable them to grant login access and steal credentials, authorise unwanted payments, redirect users to look alike websites (aka phishing attack) and more...
+
+an attacker could change the way your webpage looks for instance he could inject a html form with the form action attribute set to the addrerss of his server this stealing credentials from the user.
+
+an attacker could also register and send the users key strokes to his server with the help of an event listner that makes a note of the key strokes of the user.
+
+
+XSS DOM 
+
+payload is executed as a result of modifying the dom
+
+DOM-based XSS attacks target the Document Object Model (DOM) of a web page. The DOM represents the structure of a web page as a tree-like structure of objects that can be manipulated using JavaScript. In a DOM-based XSS attack, the attacker exploits the way the web application processes user inputs and generates dynamic content within the DOM.

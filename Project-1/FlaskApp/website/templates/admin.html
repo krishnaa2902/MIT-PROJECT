@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}admin{% endblock %}
+
+{% block content %}
+
+<form action="/admin" method="post">
+    <h3 align="center">Admin</h3>
+
+    <div class="form-group form-floating pb-3">
+        <input type="textarea" class="form-control" id="pattern" name="pattern"
+            placeholder="Enter the keywords that exist on your script (separate keywords with spaces)">
+        <label for="pattern" class="form-label">Malicious Input</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Pattern</button>
+</form>
+
+{% endblock %}
